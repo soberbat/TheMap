@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import Map from "./Map";
+import Us from "./Country/Us";
+import Bar from "./Bar";
+
+import { useState, useEffect } from "react";
 
 function App() {
+  const [country, setCountry] = useState("");
+  const [nav, setNav] = useState(false);
+  const [background, setbackground] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      className={`relative containerb overflow-hidden flex items-center justify-center w-screen h-screen ${
+        background ? "bg-blackk" : null
+      } `}
+    >
+      <Map
+        setCountry={setCountry}
+        setbackground={setbackground}
+        setnav={setNav}
+        nav={nav}
+      />
+      {nav ? <Bar country={country} setnav={setNav} /> : null}
     </div>
   );
 }

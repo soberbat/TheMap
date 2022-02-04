@@ -1,0 +1,49 @@
+.country {
+  fill: #00171f;
+  transition: ease 1s all;
+  stroke: rgba(255, 255, 255, 0.096);
+}
+
+/* .stroke{
+  
+} */
+
+.country:hover {
+  filter: drop-shadow(3px 3px 2px #007ea7);
+  fill: honeydew;
+  transform: translateY(-20px);
+  transition: ease 0.6s all;
+}
+
+.country.stroke {
+  filter: drop-shadow(3px 3px 2px #007ea7);
+  stroke: #000000;
+  fill: honeydew;
+  transform: translateY(-20px);
+  transition: ease 0.6s all;
+}
+
+.ml {
+  margin-left: 30rem;
+}
+
+.bg-blackk {
+  animation-name: cssAnimation;
+  animation-duration: 1000ms;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes cssAnimation {
+  from {
+  }
+  to {
+    background-color: #00171f;
+    stroke: transparent;
+  }
+}
+
+.containerb {
+  background-color: #e6ebe0;
+}
