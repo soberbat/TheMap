@@ -1,34 +1,35 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import "./Map.css";
 function Map(props) {
   //All the logic for map styling. Country setState
   useEffect(() => {
-    window.addEventListener("click", (e) => {
-      if (e.target.classList.contains("containerb")) {
-        props.setnav(false);
-        props.setbackground(false);
-        let lastClicked = document.querySelector(".country.stroke");
-        lastClicked.classList.remove("stroke");
-      }
-    });
+    window.addEventListener(
+      "click",
+      (e) => {
+        if (e.target.classList.contains("main-bg")) {
+          let lastClicked = document.querySelector(".country.stroke");
+          lastClicked.classList.remove("stroke");
+          e.target.classList.remove("bg-blackk");
+          props.setNav(false);
+        } else {
+        }
+      },
+      []
+    );
 
     let all = document.querySelectorAll(".country");
-    let containerr = document.querySelector(".containerb");
-    console.log(containerr);
-    console.log(containerr);
+
     all.forEach((country) => {
       country.addEventListener("click", (e) => {
-        props.setbackground(true);
         country.classList.add("stroke");
-        console.log(containerr);
+        document.querySelector(".main-bg").classList.add("bg-blackk");
+        props.setCountry(e.target.id);
+        setTimeout(() => props.setNav(true), 500);
+
         if (e.target === country) {
           all.forEach((element) => {
             if (element === e.target) {
-              props.setCountry(element.id);
-              setTimeout(() => {
-                props.setnav((prev) => true);
-              }, 1000);
-              console.log(element);
               element.parentNode.append(element);
               return;
             } else {
@@ -41,10 +42,14 @@ function Map(props) {
   }, []);
   //All the logic for map styling. Country setState
   return (
-    <div
-      className={`transition-all  duration-1000  ml-0 ${
-        props.nav ? "ml" : null
-      } `}
+    <motion.div
+      className={`${props.visibility ? "z-10" : "z-50"}`}
+      animate={{
+        x: props.nav ? 200 : 0,
+        transition: {
+          duration: 1,
+        },
+      }}
     >
       <svg
         mapsvg="http://mapsvg.com"
@@ -1593,7 +1598,7 @@ function Map(props) {
           id="ZW"
         />
       </svg>
-    </div>
+    </motion.div>
   );
 }
 

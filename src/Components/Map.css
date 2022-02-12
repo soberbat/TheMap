@@ -1,0 +1,121 @@
+.country {
+  fill: #00171f;
+  transition: ease 1s all;
+  stroke: rgba(255, 255, 255, 0.096);
+}
+
+/* .stroke{
+  
+} */
+
+.country:hover {
+  filter: drop-shadow(3px 3px 2px #495b55);
+  fill: #dde3df;
+  transform: translateY(-20px);
+  transition: ease 0.6s all;
+}
+
+.country.stroke {
+  filter: drop-shadow(3px 3px 2px #495b55);
+  stroke: #000000;
+  fill: #dde3df;
+  transform: translateY(-20px);
+  transition: ease 0.6s all;
+}
+
+.ml {
+  margin-left: 30rem;
+}
+
+.bg-blackk {
+  animation-name: cssAnimation;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes cssAnimation {
+  from {
+  }
+  to {
+    background-color: #00171f;
+    stroke: transparent;
+  }
+}
+
+.main-bg {
+  background-color: #c3cbd5;
+}
+
+.width {
+  width: 30%;
+  padding: 2rem 4rem;
+}
+
+.w0 {
+  width: 0;
+}
+
+.btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 12px 48px;
+  color: #ffffff;
+  background: linear-gradient(to right, #5f6b81 0, #adadad 10%, #5f6b81 20%);
+  background-position: 0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 1.5s infinite linear;
+  animation-fill-mode: forwards;
+  -webkit-text-size-adjust: none;
+  font-weight: 600;
+
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0;
+  }
+  50% {
+    background-position: 100px;
+  }
+  100% {
+    background-position: 300px;
+  }
+}
+
+.welcome-bg {
+  background-color: #2b303a;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  height: 100vh;
+  background-color: white;
+  flex-direction: column;
+  text-align: center;
+  display: flex;
+}
+
+.close-bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  padding: 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.flag {
+  font-size: 5rem;
+}
