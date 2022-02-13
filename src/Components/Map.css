@@ -3,6 +3,9 @@
   transition: ease 1s all;
   stroke: rgba(255, 255, 255, 0.096);
 }
+* {
+  font-family: "DM Sans", sans-serif;
+}
 
 /* .stroke{
   
@@ -85,7 +88,7 @@
     background-position: 100px;
   }
   100% {
-    background-position: 300px;
+    background-position: 500px;
   }
 }
 
@@ -103,6 +106,7 @@
   flex-direction: column;
   text-align: center;
   display: flex;
+  font-weight: 700;
 }
 
 .close-bar {
@@ -117,5 +121,5 @@
 }
 
 .flag {
-  font-size: 5rem;
+  font-size: 3rem;
 }

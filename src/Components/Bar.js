@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./Map.css";
+import Country from "./Country";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
 
-function Bar({ viewedCountry, data, setNav }) {
+function Bar({ viewedCountry, data, setNav, nav }) {
   const handleClick = () => {
     setNav((prev) => !prev);
     document.querySelector(".main-bg").classList.remove("bg-blackk");
@@ -19,13 +19,13 @@ function Bar({ viewedCountry, data, setNav }) {
     exited: {
       width: 0,
       transition: {
-        duration: 0.5,
+        duration: 0.2,
         ease: "linear",
         when: "afterChildren",
       },
     },
     visible: {
-      width: 400,
+      width: "30%",
       transition: {
         staggerChildren: 0.4,
         delayChildren: 0.3,
@@ -39,19 +39,19 @@ function Bar({ viewedCountry, data, setNav }) {
   const child = {
     hidden: {
       opacity: 0,
-      y: -400,
     },
     exited: {
       opacity: 0,
+      y: -400,
       transition: {
         duration: 0.5,
       },
     },
     visible: {
       opacity: 1,
-      y: 0,
       transition: {
-        duration: 0.5,
+        duration: 1,
+        delay: 1,
       },
     },
   };
@@ -78,12 +78,13 @@ function Bar({ viewedCountry, data, setNav }) {
         X
       </motion.span>
 
-      <motion.h1 className="flag" variants={child}>
-        {viewedCountry.flag}
-      </motion.h1>
-      <motion.h1 className="flag" variants={child}>
-        {viewedCountry.altSpellings[1]}
-      </motion.h1>
+      <AnimatePresence exitBeforeEnter>
+        <Country
+          key={viewedCountry.ccn3}
+          data={data}
+          viewedCountry={viewedCountry}
+        />
+      </AnimatePresence>
     </motion.div>
   );
 }

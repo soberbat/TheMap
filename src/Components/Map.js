@@ -23,7 +23,7 @@ function Map(props) {
     all.forEach((country) => {
       country.addEventListener("click", (e) => {
         country.classList.add("stroke");
-        document.querySelector(".main-bg").classList.add("bg-blackk");
+
         props.setCountry(e.target.id);
         setTimeout(() => props.setNav(true), 500);
 
@@ -46,8 +46,9 @@ function Map(props) {
       className={`${props.visibility ? "z-10" : "z-50"}`}
       animate={{
         x: props.nav ? 200 : 0,
+        y: props.visibility ? -4000 : 0,
         transition: {
-          duration: 1,
+          duration: 2,
         },
       }}
     >

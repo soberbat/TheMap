@@ -1,5 +1,5 @@
 import Map from "./Components/Map";
-import Us from "./Country/Us";
+
 import Bar from "./Components/Bar";
 import Particle from "./Components/Particle";
 import { useState, useEffect } from "react";
@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 function App() {
   const [country, setCountry] = useState(null);
+  const [alert, setAlert] = useState(true);
   const [nav, setNav] = useState(false);
   const [background, setbackground] = useState(false);
   const [visibility, setVisibility] = useState(true);
@@ -28,11 +29,19 @@ function App() {
     fetchData();
   }, []);
 
+  const handleClick = () => {
+    setAlert((prev) => !prev);
+  };
+
   return (
-    <div
-      className={`relative main-bg overflow-hidden flex items-center justify-center w-screen h-screen ${
-        background ? "bg-blackk" : null
-      } `}
+    <motion.div
+      animate={{
+        backgroundColor: nav ? "#00171f" : "#c3cbd5",
+        transition: {
+          duration: 1,
+        },
+      }}
+      className={`relative main-bg overflow-hidden flex items-center justify-center w-screen h-screen  `}
     >
       <Map
         setNav={setNav}
@@ -48,6 +57,8 @@ function App() {
             viewedCountry={viewedCountry}
             country={country}
             setNav={setNav}
+            nav={nav}
+            data={data}
           />
         )}
       </AnimatePresence>
@@ -56,8 +67,23 @@ function App() {
         {visibility && <Welcome setVisibility={setVisibility} />}
       </AnimatePresence>
 
-      {/* {<Particle />} */}
-    </div>
+      {<Particle />}
+      <motion.h1
+        animate={{
+          x: alert ? 0 : 300,
+          opacity: 1,
+          transition: {
+            duration: 1,
+          },
+        }}
+        className="fixed flex items-center justify-between gap-6 px-6 py-2 bg-white rounded-sm shadow-sm right-2 bottom-2 "
+      >
+        Choose a country{" "}
+        <span onClick={handleClick} className="font-extrabold cursor-pointer">
+          X
+        </span>
+      </motion.h1>
+    </motion.div>
   );
 }
 
